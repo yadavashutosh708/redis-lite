@@ -25,11 +25,8 @@ public class CommandHandler implements Runnable{
 
                 if(command.trim().equals("PING")){
                     bufferedWriter.write("PONG");
-                    bufferedWriter.newLine();
                     bufferedWriter.flush();
                     System.out.println("Sent Response: " + "PONG");
-                }else{
-                    System.out.println("Not fulfilled");
                 }
             } catch (IOException e) {
                 closeGracefully(clientSocket, bufferedWriter, bufferedReader);
