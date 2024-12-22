@@ -12,7 +12,7 @@ public class Server {
 
     public void startServer() {
         try {
-            if (!serverSocket.isClosed()) {
+            while (!serverSocket.isClosed()) {
                 Socket clientSocket = serverSocket.accept();
                 CommandHandler commandHandler = new CommandHandler(clientSocket);
                 System.out.println("Server : " + serverSocket);

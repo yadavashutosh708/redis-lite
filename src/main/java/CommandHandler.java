@@ -41,35 +41,4 @@ public class CommandHandler implements Runnable{
         if(bufferedWriter != null)bufferedWriter = null;
         if(clientSocket != null)clientSocket = null;
     }
-
-
-    /*
-
-
-            InputStream inputStream = clientSocket.getInputStream();
-            String text = new String(inputStream.readAlclientSocketlBytes(), StandardCharsets.UTF_8).trim();
-            System.out.println("Received Command: " + text);
-
-            if (text.equals("*1\\r\\n$4\\r\\nping\\r\\n")) {
-                OutputStream outputStream = clientSocket.getOutputStream();
-                String output = "PONG";
-                outputStream.write(output.getBytes(StandardCharsets.UTF_8));
-                outputStream.flush();
-
-                System.out.println("Sent Respinse: " + output);
-                outputStream.close();
-                inputStream.close();
-            }
-        } catch (IOException e) {
-            System.out.println("IOException: " + e.getMessage());
-        } finally {
-            try {
-                if (clientSocket != null) {
-                    clientSocket.close();
-                }
-            } catch (IOException e) {
-                System.out.println("IOException: " + e.getMessage());
-            }
-        }
-     */
 }
