@@ -1,6 +1,9 @@
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.nio.charset.StandardCharsets;
 
 public class Main {
   public static void main(String[] args){
@@ -8,7 +11,7 @@ public class Main {
     System.out.println("Logs from your program will appear here!");
 
     //  Uncomment this block to pass the first stage
-        ServerSocket serverSocket = null;
+        ServerSocket serverSocket;
         Socket clientSocket = null;
         int port = 6379;
         try {
@@ -25,6 +28,16 @@ public class Main {
         } finally {
           try {
             if (clientSocket != null) {
+              InputStream inputStream = clientSocket.getInputStream();
+              String text = new String(inputStream.readAllBytes());
+              inputStream.close();
+              if(text.trim().equals("PING")){
+                  OutputStream outputStream = clientSocket.getOutputStream();
+                  String output = "PONG";
+                  outputStream.write(output.getBytes(StandardCharsets.UTF_8));
+                  outputStream.flush();
+                  outputStream.close();
+              }
               clientSocket.close();
             }
           } catch (IOException e) {
