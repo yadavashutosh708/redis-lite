@@ -24,7 +24,7 @@ public class CommandHandler implements Runnable{
                 System.out.println("Received Command: " + command);
 
                 if(command.trim().equals("PING")){
-                    bufferedWriter.write("PONG");
+                    bufferedWriter.write("+PONG");
                     bufferedWriter.flush();
                     System.out.println("Sent Response: " + "PONG");
                 }
