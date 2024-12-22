@@ -23,7 +23,7 @@ public class CommandHandler implements Runnable{
                 String command = bufferedReader.readLine();
                 System.out.println("Received Command: " + command);
 
-                if(command.trim().equals("*1\\r\\n$4\\r\\nping\\r\\n")){
+                if(command.trim().equals("PING")){
                     bufferedWriter.write("PONG");
                     bufferedWriter.newLine();
                     bufferedWriter.flush();
